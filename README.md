@@ -1,7 +1,7 @@
 Tutoriels AWS
 -------------
 
-> Ce repo va regrouper toutes mes guides et tutoriels concernant tout AWS.
+> Ce repo va regrouper toutes tutoriels et guides concernant tout AWS.
 
 --------------------------------------------------------------------------
 
@@ -19,7 +19,9 @@ Tutoriels AWS
 
 - ##### [Introduction a AWS Lambda et Serverless](https://www.youtube.com/@0xibra-devlogs)
 
------------------------------------------------
+
+--------------------------------------------------------------------------
+
 
 ### Réseaux
 

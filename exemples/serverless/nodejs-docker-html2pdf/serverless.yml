@@ -1,0 +1,40 @@
+service: nodejs-docker-html2pdf
+
+provider:
+  name: aws
+  region: eu-west-3
+  stage: dev
+  memorySize: 512
+  timeout: 30
+
+  # environment:
+  #   NODE_ENV: production
+
+  # iamRoleStatements:
+  #   - Effect: Allow
+  #     Action:
+  #       - s3:PutObject
+  #     Resource: arn:aws:s3:::html2pdf-*
+
+  ecr:
+    images:
+      html2pdf:
+        path: ./
+
+functions:
+  html2pdf:
+    image:
+      name: html2pdf
+      command: ["app.handler"]
+      entryPoint: ["/lambda-entrypoint.sh"]
+
+    name: html2pdf-function
+    memorySize: 1024
+    timeout: 30
+    maximumRetryAttempts: 0
+    events:
+      - http:
+          path: /html2pdf
+          method: POST
+          cors: true
+
