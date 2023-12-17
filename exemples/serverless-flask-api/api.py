@@ -3,7 +3,8 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+from routes import users_blueprint
+from routes import generations_blueprint
 
-@app.route('/users', methods=['GET'])
-def get_users():
-    return jsonify([{'name': 'John Doe'}, {'name': 'Jane Doe'}])
+app.register_blueprint(users_blueprint)
+app.register_blueprint(generations_blueprint)
