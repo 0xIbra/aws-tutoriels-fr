@@ -5,10 +5,28 @@ provider:
   stage: dev
   region: eu-west-3
   memorySize: 128
+  timeout: 30
 
+  # définition des variables d'environnement
+  environment:
+    S3_BUCKET: your-bucket-name
+
+
+  # gestion permissions aws services
+  # ici on donne les droits à la fonction lambda de lire et écrire dans le bucket S3
+  # on peut aussi donner des droits à d'autres services AWS (ex: dynamodb, sqs, sns, ...)
+
+  # iamRoleStatements:
+  #   - Effect: "Allow"
+  #     Action: "s3:*"
+  #     Resource:
+  #       - "arn:aws:s3:::your-bucket-name/*"
+  #       - "arn:aws:s3:::your-bucket-name"
+
+# ici on declare les plugins serverless qu'on utilise
 plugins:
-  - serverless-python-requirements
-  - serverless-wsgi
+  - serverless-python-requirements # pour gerer les dependances python (lire le fichier requirements.txt)
+  - serverless-wsgi # necessaire pour utiliser flask avec serverless
 
 # uniquement necessaire quand on utilise le plugin `serverless-wsgi`
 custom:
@@ -21,7 +39,8 @@ custom:
 # avec cette config, on a une seule fonction lambda qui gère toutes les routes (flask)
 functions:
   app:
-    handler: wsgi_handler.handler
+    name: example-project-flask-api # nom de la fonction Lambda
+    handler: wsgi_handler.handler # ceci est le nom a tout le temps utiliser quand on utilise le plugin `serverless-wsgi`
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
