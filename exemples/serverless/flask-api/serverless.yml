@@ -23,6 +23,13 @@ provider:
   #       - "arn:aws:s3:::your-bucket-name/*"
   #       - "arn:aws:s3:::your-bucket-name"
 
+  # Cors
+  httpApi:
+    cors:
+      allowedOrigins: '*'
+      allowedMethods: [GET, POST, PUT, DELETE, PATCH]
+      allowedHeaders: [Authorization, Content-Type]
+
 # ici on declare les plugins serverless qu'on utilise
 plugins:
   - serverless-python-requirements # pour gerer les dependances python (lire le fichier requirements.txt)
