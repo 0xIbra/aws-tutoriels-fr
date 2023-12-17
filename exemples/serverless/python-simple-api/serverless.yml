@@ -1,0 +1,24 @@
+service: example-python-simple-api
+provider:
+  name: aws
+  runtime: python3.10
+  stage: dev
+  region: eu-west-3
+  memorySize: 128
+
+plugins:
+  - serverless-python-requirements
+
+# avec cette config, on n'utilise pas flask donc on a une fonction lambda par route
+# ce type de config est souvent utilisé pour une mini api qui ne fait pas beaucoup de choses.
+# A SAVOIR: ces fonctions ne seront pas éxecutés dans le meme environnment.
+functions:
+  get-users:
+    handler: users.get_users
+    events:
+      - http: GET /users
+
+  get-generations:
+    handler: generations.get_generations
+    events:
+      - http: GET /generations

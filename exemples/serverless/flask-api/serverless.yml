@@ -10,12 +10,15 @@ plugins:
   - serverless-python-requirements
   - serverless-wsgi
 
+# uniquement necessaire quand on utilise le plugin `serverless-wsgi`
 custom:
   wsgi:
-    app: api.app
+    app: api.app # nom du fichier python (sans le .py) - ici on reference `app` qui situe dans `api.py`
     packRequirements: false
     pythonBin: python3
 
+
+# avec cette config, on a une seule fonction lambda qui gère toutes les routes (flask)
 functions:
   app:
     handler: wsgi_handler.handler
