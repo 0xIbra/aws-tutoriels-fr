@@ -1,0 +1,18 @@
+service: example-flask-api
+provider:
+  name: aws
+  runtime: python3.10
+  stage: dev
+  region: eu-west-3
+  memorySize: 128
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+
+functions:
+  app:
+    handler: wsgi.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
