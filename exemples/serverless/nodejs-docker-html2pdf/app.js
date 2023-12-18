@@ -5,6 +5,7 @@ async function initBrowser() {
         var browser = await puppeteer.launch({
             headless: true,
             args: [
+                '--user-data-dir=/tmp/chromium-user-data',
                 '--no-sandbox',
                 '--single-process',
                 '--no-zygote',

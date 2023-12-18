@@ -25,9 +25,6 @@ functions:
   html2pdf:
     image:
       name: html2pdf
-      command: ["app.handler"]
-      entryPoint: ["/lambda-entrypoint.sh"]
-
     name: html2pdf-function
     memorySize: 1024
     timeout: 30
