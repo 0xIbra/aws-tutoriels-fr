@@ -1,4 +1,5 @@
 service: nodejs-docker-html2pdf
+frameworkVersion: '3'
 
 provider:
   name: aws

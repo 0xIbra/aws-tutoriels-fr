@@ -1,4 +1,6 @@
 service: example-python-simple-api
+frameworkVersion: '3'
+
 provider:
   name: aws
   runtime: python3.10
