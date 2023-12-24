@@ -29,7 +29,7 @@ functions:
     name: s3-image-compression
     handler: processFile.handler
 
-    memorySize: 256 # mémoire allouée à la fonction
+    memorySize: 512 # mémoire allouée à la fonction
     timeout: 60 # temps maximum d'exécution de la fonction
     maximumRetryAttempts: 0 # nombre de tentatives de réexécution en cas d'erreur
 
@@ -38,6 +38,7 @@ functions:
     events:
       - s3:
           bucket: ${self:provider.environment.S3_BUCKET}
+          existing: true
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads-test/

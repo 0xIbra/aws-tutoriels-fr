@@ -14,6 +14,7 @@
   "author": "0xIbra <ibragim.ai95@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1525.0",
     "sharp": "^0.33.1"
   }
 }

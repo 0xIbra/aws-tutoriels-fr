@@ -4,6 +4,7 @@
  */
 
 const aws = require('aws-sdk');
+const sharp = require('sharp');
 
 module.exports.handler = async (event) => {
     const s3 = new aws.S3();
@@ -23,7 +24,6 @@ module.exports.handler = async (event) => {
         }
 
         const data = await s3.getObject(params).promise();
-        const sharp = require('sharp');
         const compressedImage = await sharp(data.Body).jpeg({ quality: 80 }).toBuffer();
         const uploadParams = {
             Bucket: bucket,
