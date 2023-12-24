@@ -18,8 +18,8 @@ Ce guide va vous aider a configurer des fonctions lambda similaires.
 1. Clonez le dépôt contenant l'exemple de traitement de fichiers S3 avec Node.js.
 2. Naviguez jusqu'au dossier contenant l'exemple.
 3. Exécutez npm install pour installer les dépendances nécessaires.
-4. Modifiez le fichier serverless.yml pour spécifier le nom de votre bucket S3 à la ligne 12.
-5. Déployez la fonction avec la commande sls deploy.
+4. Modifiez le fichier serverless.yml pour spécifier le nom de votre bucket S3 à la ligne `12`.
+5. Déployez la fonction avec la commande `sls deploy`.
 
 ---
 
