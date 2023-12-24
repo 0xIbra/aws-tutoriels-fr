@@ -1,0 +1,19 @@
+{
+  "name": "@aws-tutoriels-fr/nodejs-s3-file",
+  "version": "1.0.0",
+  "description": "Tutoriels AWS -------------",
+  "main": "processFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda"
+  ],
+  "author": "0xIbra <ibragim.ai95@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.33.1"
+  }
+}

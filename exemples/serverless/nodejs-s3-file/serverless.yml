@@ -1,0 +1,44 @@
+service: example-nodejs-s3-file-processing
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: eu-west-3
+
+  environment:
+    S3_BUCKET: narkis-training # Votre bucket S3
+
+  # gestion permissions aws services
+  iamRoleStatements:
+      - Effect: "Allow"
+
+        # On autorise uniquement GetObject et PutObject comme operations
+        Action:
+          - "s3:GetObject"
+          - "s3:PutObject"
+
+        # Autorise la lecture et ecriture dans tout le bucket S3
+        Resource: "arn:aws:s3:::${self:provider.environment.S3_BUCKET}/*"
+        # Autorise la lecture et ecriture uniquement dans le dossier `/uploads/` du bucket S3
+        # Resource: "arn:aws:s3:::${self:provider.environment.S3_BUCKET}/uploads/*"
+
+functions:
+  processFile:
+    name: s3-image-compression
+    handler: processFile.handler
+
+    memorySize: 256 # mémoire allouée à la fonction
+    timeout: 60 # temps maximum d'exécution de la fonction
+    maximumRetryAttempts: 0 # nombre de tentatives de réexécution en cas d'erreur
+
+    # Définit l'événement qui déclenche cette fonction. Ici, c'est la création d'un objet dans un certain bucket S3.
+    # De plus, un préfixe est spécifié, ce qui signifie que seuls les objets qui commencent par 'uploads/' déclencheront la fonction.
+    events:
+      - s3:
+          bucket: ${self:provider.environment.S3_BUCKET}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads-test/
+            # - suffix: .jpg 
