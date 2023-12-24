@@ -1,3 +1,5 @@
+# org: iterativecode
+# app: example-nodejs-s3-file-processing
 service: example-nodejs-s3-file-processing
 frameworkVersion: '3'
 
