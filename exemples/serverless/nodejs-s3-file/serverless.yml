@@ -40,7 +40,7 @@ functions:
     events:
       - s3:
           bucket: ${self:provider.environment.S3_BUCKET}
-          existing: true
+          existing: true # On utilise un bucket existant, sinon il sera créé
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads-test/
