@@ -1,0 +1,48 @@
+# org: your-org
+# app: nodejs-sqs-example
+service: nodejs-sqs-example
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: eu-west-3
+
+  environment:
+    SQS_QUEUE_NAME: your-queue-name.fifo
+
+  # gestion permissions aws services
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: "sqs:*"
+      Resource:
+        Fn::GetAtt: [OrdersQueue, Arn]
+
+
+# Définition d'autres ressources AWS dont on a besoin
+# Ici, on va définir et créer une queue SQS
+resources:
+  Resources:
+    OrdersQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.SQS_QUEUE_NAME}
+        FifoQueue: true
+        ContentBasedDeduplication: true
+        VisibilityTimeout: 60
+        ReceiveMessageWaitTimeSeconds: 20
+
+
+functions:
+  orderProcessor:
+    name: order-processor
+    handler: processOrder.handler
+    memorySize: 256 # mémoire allouée à la fonction
+    timeout: 30 # temps maximum d'exécution de la fonction
+    maximumRetryAttempts: 0 # nombre de tentatives de réexécution en cas d'erreur
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt: [OrdersQueue, Arn]
+          batchSize: 1

@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-sqs-order-processing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "processOrder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda"
+  ],
+  "author": "0xIbra <ibragim.ai95@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1525.0"
+  }
+}
