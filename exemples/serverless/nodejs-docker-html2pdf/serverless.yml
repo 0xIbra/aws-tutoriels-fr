@@ -28,7 +28,7 @@ functions:
       name: html2pdf
     name: html2pdf-function
     memorySize: 1024
-    timeout: 30
+    timeout: 60
     maximumRetryAttempts: 0
     events:
       - http:
