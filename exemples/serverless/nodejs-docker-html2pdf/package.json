@@ -12,6 +12,7 @@
   "author": "0xIbra",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^18"
+    "chrome-aws-lambda": "^2.1.*",
+    "puppeteer-core": "^2.1.*"
   }
 }

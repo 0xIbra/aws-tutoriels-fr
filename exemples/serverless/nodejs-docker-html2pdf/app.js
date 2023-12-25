@@ -6,15 +6,20 @@
  *
  */
 
-const puppeteer = require("puppeteer");
+const chromium = require('chrome-aws-lambda');
+
+if (typeof browser === "undefined") {
+    var browser;
+    var page;
+}
 
 async function initBrowser() {
-    if (typeof page === "undefined") {
-        var browser = await puppeteer.launch({
-            executablePath: process.env.CHROMIUM_PATH || null,
+    if (page == null) {
+        browser = await chromium.puppeteer.launch({
+            executablePath: await chromium.executablePath,
             headless: true,
+            userDataDir: '/tmp/crawler-cache',
             args: [
-                '--user-data-dir=/tmp/chromium-user-data',
                 '--no-sandbox',
                 '--single-process',
                 '--no-zygote',
@@ -55,8 +60,8 @@ async function initBrowser() {
                 '--use-mock-keychain'
             ]
         });
-    
-        var page = await browser.newPage();
+
+        page = await browser.newPage();
     }
 }
 
@@ -68,7 +73,7 @@ async function initBrowser() {
  * ou
  * event.body.html: HTML à convertir en PDF
  */
-module.exports.handler = async (event) => {
+exports.handler = async (event) => {
     console.log("event", event)
 
     await initBrowser();
