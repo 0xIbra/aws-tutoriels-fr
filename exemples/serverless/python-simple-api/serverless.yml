@@ -1,3 +1,5 @@
+# org: your-org
+# app: example-python-simple-api
 service: example-python-simple-api
 frameworkVersion: '3'
 

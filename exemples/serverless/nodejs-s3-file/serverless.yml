@@ -1,4 +1,4 @@
-# org: iterativecode
+# org: your-org
 # app: example-nodejs-s3-file-processing
 service: example-nodejs-s3-file-processing
 frameworkVersion: '3'
