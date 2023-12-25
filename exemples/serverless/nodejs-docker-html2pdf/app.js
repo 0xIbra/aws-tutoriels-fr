@@ -1,8 +1,17 @@
+/**
+ * @api {post} /pdf Generate PDF
+ * @apiName Generate PDF
+ *
+ * Fonction serverless pour générer un PDF via Puppeteer.
+ *
+ */
+
 const puppeteer = require("puppeteer");
 
 async function initBrowser() {
     if (typeof page === "undefined") {
         var browser = await puppeteer.launch({
+            executablePath: process.env.CHROMIUM_PATH || null,
             headless: true,
             args: [
                 '--user-data-dir=/tmp/chromium-user-data',
@@ -51,6 +60,14 @@ async function initBrowser() {
     }
 }
 
+/**
+ * @param {object} event
+ * @returns {object}
+ * 
+ * event.body.url : URL de la page à convertir en PDF
+ * ou
+ * event.body.html: HTML à convertir en PDF
+ */
 module.exports.handler = async (event) => {
     console.log("event", event)
 
@@ -65,14 +82,19 @@ module.exports.handler = async (event) => {
     }
 
     const url = body.url;
-    if (url == null) {
+    const html = body.html;
+    if (url == null && html == null) {
         return {
             statusCode: 400,
-            body: JSON.stringify({ code: 400, message: "url is required" })
+            body: JSON.stringify({ code: 400, message: "\"url\" or \"html\" is required" })
         }
     }
 
-    await page.goto(url, { waitUntil: "networkidle0" });
+    if (url) {
+        await page.goto(url, { waitUntil: "networkidle0" });
+    } else {
+        await page.setContent(html);
+    }
 
     const buffer = await page.pdf({
         format: "A4",
