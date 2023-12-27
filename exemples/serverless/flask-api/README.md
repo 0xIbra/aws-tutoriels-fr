@@ -23,3 +23,10 @@ Une fois le déploiement terminé, vous devriez voir l'URL de votre API dans la 
 **Note sur la configuration de Serverless:**
 
 Dans le fichier `serverless.yml`, une seule fonction est configurée pour l'API Flask, malgré la présence de plusieurs routes API. C'est parce que Flask gère le routage une fois que la requête atteint l'application. Ainsi, une seule fonction AWS Lambda est nécessaire pour faire le pont entre l'API Gateway AWS et notre application Flask.
+
+----------------------------------------------
+
+
+**Schéma**
+
+![aws-lambda-api-gateway](docs/img/aws-lambda-api-gateway.jpg)
