@@ -15,13 +15,16 @@ Ce guide va vous aider a configurer des fonctions lambda similaires.
 
 ### Instructions
 
-1. Clonez le dépôt contenant l'exemple de traitement de fichiers S3 avec Node.js.
-2. Naviguez jusqu'au dossier contenant l'exemple.
-3. Exécutez npm install pour installer les dépendances nécessaires.
-4. Modifiez le fichier serverless.yml pour spécifier le nom de votre bucket S3 à la ligne `12`.
-5. Déployez la fonction avec la commande `sls deploy`.
-
----
+1. Clonez le dépôt et aller dans `exemples/serverless/nodejs-s3-file`.
+2. Installer les dépendances nodejs nécessaires.
+3. Modifiez le fichier `serverless.yml` pour spécifier le nom de votre bucket S3 à la ligne `12`.
+4. Déployez la fonction avec la commande `sls deploy`.
 
 Une fois le déploiement terminé, votre fonction Lambda sera déclenchée chaque fois qu'une image est ajoutée à votre bucket S3.  
 La fonction Lambda compresse alors l'image avant de la réenregistrer dans le bucket.
+
+---
+
+### Schéma
+
+![aws-lambda-s3](docs/img/aws-lambda-s3.jpg)
