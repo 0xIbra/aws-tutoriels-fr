@@ -41,3 +41,7 @@ Pour tester, vous pouvez envoyer un message à votre file SQS via la console AWS
 
 Pour supprimer le service, utilisez la commande `serverless remove`.  
 A noter que cela va aussi supprimer toutes les ressources que vous avez creer sous `resources:`, donc la file SQS sera également supprimée dans ce cas.
+
+### Schéma
+
+![aws-lambda-sqs](docs/img/aws-lambda-sqs.jpg)
