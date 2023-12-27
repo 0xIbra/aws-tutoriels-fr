@@ -10,19 +10,21 @@ Tutoriels AWS
 - ##### Serverless
     - [API Flask avec Serverless](exemples/serverless/flask-api/)
     - [API Serverless sans Flask](exemples/serverless/python-simple-api/)
-
+    - [Exécution lors d'upload de fichier sur S3](exemples/serverless/nodejs-s3-file/)
+    - [Exécution lors de réception de message dans queue SQS](exemples/serverless/nodejs-sqs/)
+    - [Fonction lambda avec Docker](exemples/serverless/nodejs-docker-html2pdf/)
 
 --------------------------------------------------------------------------
 
 
 ### Videos
 
-- ##### [Introduction a AWS Lambda et Serverless](https://www.youtube.com/@0xibra-devlogs)
+- ##### [Introduction a AWS Lambda et Serverless framework](https://www.youtube.com/@0xibra-devlogs)
 
 
 --------------------------------------------------------------------------
 
 
-### Réseaux
+### Contact
 
 - [Twitter/X @0xibra_](https://twitter.com/_0xIbra)
