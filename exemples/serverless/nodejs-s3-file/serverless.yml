@@ -10,7 +10,7 @@ provider:
   region: eu-west-3
 
   environment:
-    S3_BUCKET: narkis-training # Votre bucket S3
+    S3_BUCKET: your-bucket # Votre bucket S3
 
   # gestion permissions aws services
   iamRoleStatements:
