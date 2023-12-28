@@ -10,7 +10,7 @@ provider:
   region: eu-west-3
 
   environment:
-    S3_BUCKET: your-bucket # Votre bucket S3
+    S3_BUCKET: nom-de-votre-bucket # Votre bucket S3 (doit être créé au préalable)
 
   # gestion permissions aws services
   iamRoleStatements:
