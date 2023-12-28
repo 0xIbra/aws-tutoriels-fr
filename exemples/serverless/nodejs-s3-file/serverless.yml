@@ -10,7 +10,7 @@ provider:
   region: eu-west-3
 
   environment:
-    S3_BUCKET: nom-de-votre-bucket # Votre bucket S3 (doit être créé au préalable)
+    S3_BUCKET: compression-d-images-test # Votre bucket S3 (doit être créé au préalable)
 
   # gestion permissions aws services
   iamRoleStatements:
@@ -26,6 +26,20 @@ provider:
         # Autorise la lecture et ecriture uniquement dans le dossier `/uploads/` du bucket S3
         # Resource: "arn:aws:s3:::${self:provider.environment.S3_BUCKET}/uploads/*"
 
+# Il est aussi possible de créer le bucket S3 directement depuis le fichier serverless.yml
+# Suffit de décommenter la section suivante
+# resources:
+#   Resources:
+#     ImagesBucket:
+#       Type: 'AWS::S3::Bucket'
+#       Properties:
+#         BucketName: ${self:provider.environment.S3_BUCKET}
+#         PublicAccessBlockConfiguration:
+#           BlockPublicAcls: true
+#           IgnorePublicAcls: true
+#           BlockPublicPolicy: true
+#           RestrictPublicBuckets: true
+
 functions:
   processFile:
     name: s3-image-compression
@@ -40,7 +54,7 @@ functions:
     events:
       - s3:
           bucket: ${self:provider.environment.S3_BUCKET}
-          existing: true # On utilise un bucket existant, sinon il sera créé
+          existing: true # On utilise un bucket existant
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads-test/
