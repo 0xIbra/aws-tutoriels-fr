@@ -1,0 +1,16 @@
+service: node-express-api-example
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-3 # Paris
+  stage: dev
+
+functions:
+  api:
+    name: node-express-api-example # Nom de la fonction Lambda
+    handler: index.handler
+    events:
+      - httpApi: '*' # La meme chose que de dire "ANY /"
+
