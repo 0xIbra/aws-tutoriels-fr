@@ -49,6 +49,12 @@ functions:
     timeout: 60 # temps maximum d'exécution de la fonction
     maximumRetryAttempts: 0 # nombre de tentatives de réexécution en cas d'erreur
 
+    # permets d'avoir x nombre d'instances pretes a accepter des requetes sans demarrage
+    # provisionedConcurrency: 5
+
+    # permets de réserver x nombre d'instances à cette fonction, ceci est aussi la limite maximale d'instances possibles en simultanées
+    # reservedConcurrency: 100
+
     # Définit l'événement qui déclenche cette fonction. Ici, c'est la création d'un objet dans un certain bucket S3.
     # De plus, un préfixe est spécifié, ce qui signifie que seuls les objets qui commencent par 'uploads/' déclencheront la fonction.
     events:
