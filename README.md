@@ -1,7 +1,7 @@
 Tutoriels AWS
 -------------
 
-> Ce repo va regrouper toutes tutoriels et guides concernant tout AWS.
+> Ce repo va regrouper tous les guides concernant tout AWS.
 
 --------------------------------------------------------------------------
 
