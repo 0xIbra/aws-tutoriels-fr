@@ -27,4 +27,4 @@ Tutoriels AWS
 
 ### Contact
 
-- [Twitter/X @0xibra_](https://twitter.com/_0xIbra)
+- [Twitter@0xIbrafr](https://twitter.com/0xIbrafr)
