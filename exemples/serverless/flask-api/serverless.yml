@@ -50,6 +50,15 @@ functions:
   app:
     name: example-project-flask-api # nom de la fonction Lambda
     handler: wsgi_handler.handler # ceci est le nom a tout le temps utiliser quand on utilise le plugin `serverless-wsgi`
+    memorySize: 256 # surcharge
+
+    # permets d'avoir x nombre d'instances pretes a accepter des requetes sans demarrage
+    # provisionedConcurrency: 5
+
+    # permets de réserver x nombre d'instances à cette fonction, ceci est aussi la limite maximale d'instances possibles en simultanées
+    # reservedConcurrency: 100
+
+    # ici on précise les déclencheurs (http)
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
